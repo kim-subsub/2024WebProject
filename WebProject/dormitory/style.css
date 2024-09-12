@@ -1,0 +1,330 @@
+@font-face {
+  font-family: 'Harry Potter Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local("Harry Potter Regular"), url("../css/Harry Potter Regular.ttf") format('woff');
+}
+
+:root {
+  --home-color: #721414d7;
+  --about-color: #005b0c;
+  --contact-color: #0e5fa6;
+  --services-color: #d8b52b;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'IBM Plex Mono', monospace;
+  margin: 0;
+  padding: 0;
+}
+#music{
+  display: none;
+}
+
+.view {
+  color: #ffffff;
+  height: 100vh;
+  padding: 2em;
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.view__title {
+  margin: 0;
+  font-size: 0.8em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.home ,
+.legend__item--home .legend__bg {
+  background-color: var(--home-color);
+}
+
+.about,
+.legend__item--about .legend__bg {
+  background-color: var(--about-color);
+}
+
+.contact,
+.legend__item--contact .legend__bg {
+  background-color: var(--contact-color);
+}
+
+.services,
+.legend__item--services .legend__bg {
+  background-color: var(--services-color);
+}
+
+.percentage {
+  height: 200px;
+  left: 50%;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 340px;
+}
+
+.percentage__value {
+  opacity: 0;
+  font-size: 10rem;
+  letter-spacing: -0.05em;
+  font-weight: 300;
+}
+
+.percentage__extension {
+  font-size: 3rem;
+}
+
+.sub {
+  display: block;
+  font-size: 0.9em;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.legend {
+  background-color: #ffffff;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  height: 60px;
+  justify-content: space-evenly;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+.legend__bg {
+  display: block;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  width: 100%;
+  z-index: 2;
+}
+
+.legend__item {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 3px 1px 5px 0px rgba(0, 0, 0, 0.21);
+}
+
+.legend__title {
+  position: relative;
+  z-index: 3;
+  font-size: 0.8em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.legend__item--home {
+  z-index: 10;
+}
+
+.legend__item--about {
+  z-index: 9;
+}
+
+.legend__item--contact {
+  z-index: 8;
+}
+
+.legend__item--services {
+  z-index: 7;
+}
+
+/* 3d card */
+:root {
+  --card-height: 50vh; 
+  --card-width: calc(var(--card-height) / 1.5);
+}
+.card {
+  left: 50%; top: 50%; 
+  transform: translateX(-50%); margin-top: -150px;
+  width: var(--card-width);
+  height: var(--card-height);
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  perspective: 2500px;
+}
+.cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+}
+.wrapper {
+  transition: all 0.5s;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+.card:hover .wrapper {
+  transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+  box-shadow: 1px 17px 16px -4px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 1px 17px 16px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 17px 16px -4px rgba(0, 0, 0, 0.75);
+}
+.wrapper::before,
+.wrapper::after {
+  content: "";
+  opacity: 0;
+  width: 100%;
+  height: 4vh; 
+  transition: all 0.5s;
+  position: absolute;
+  left: 0;
+}
+.wrapper::before {
+  top: 0;
+  height: 100%;
+  background-image: linear-gradient(
+    to top,
+    transparent 46%,
+    rgba(12, 13, 19, 0.5) 68%,
+    rgba(12, 13, 19) 97%
+  );
+}
+.wrapper::after {
+  bottom: 0;
+  opacity: 1;
+  background-image: linear-gradient(
+    to bottom,
+    transparent 46%,
+    rgba(12, 13, 19, 0.5) 68%,
+    rgba(12, 13, 19) 97%
+  );
+}
+.card:hover .wrapper::before,
+.wrapper::after {
+  opacity: 1;
+}
+.card:hover .wrapper::after {
+  height: 6vh; 
+}
+.title {
+  width: 100%;
+  transition: transform 0.5s;
+}
+.card:hover .title {
+  transform: translate3d(0%, -10%, 100px);
+}
+.character {
+  width: 100%;
+  opacity: 0;
+  transition: all 0.5s;
+  position: absolute;
+  z-index: -1;
+}
+.card:hover .character {
+  opacity: 1;
+  transform: translate3d(0%, -10%, 100px);
+}
+
+.container {
+  width: 1080px;
+  overflow: hidden;
+  margin: 0 auto;
+  position: relative;
+}
+
+.left {
+  position: relative;
+  float: left;
+  width: 30%;
+  height: 428px;
+}
+
+.right {
+  position: relative;
+  float: right;
+  width: 70%;
+  height: 428px;
+}
+
+.text {
+  position: relative;
+  height: 150px;
+  text-align: center;
+  font-family:"Harry Potter Regular", serif;
+}
+.text > h1{
+  width: 300px;
+  position: absolute;
+  font-size: 4em;
+  top: 0; left: 50%; margin-left: -150px;
+  text-shadow: 1px 1px 50px rgba(255, 255, 255,0.3);
+}
+
+.content{
+  position: relative;
+  height: 400px;
+  text-align: center;
+  font-family:"Harry Potter Regular", serif;
+}
+
+.content > h2 {
+  color: rgb(255, 230, 66);
+  font-size: 1.7em;
+  text-shadow: 1px 1px 10px #000000;
+  padding-top: 100px;
+}
+
+@media screen and (max-width:768px) {
+  .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .content {
+    text-align: center;
+    font-size: 0.9em; 
+    padding: 0;
+  }
+  .card{
+    transform: translateX(-50%); margin-top: -170px;
+  }
+  .left{
+    max-height: 350px;
+  }
+  .legend{
+    display: none;
+  }
+  .content > h2 {
+    color: rgb(255, 230, 66);
+    font-size: 1.2em;
+    text-shadow: 1px 1px 10px #000000;
+    padding: 0;
+  }
+  .content>p{
+    font-size: 0.9em;
+  }
+}
+@media screen and (min-width: 960px) { 
+  .card{
+    width: 250px;
+    height: 400px;
+  }
+}

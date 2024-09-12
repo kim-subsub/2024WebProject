@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      @font-face {
+          font-family: 'Harry Potter Regular';
+          font-style: normal;
+          font-weight: normal;
+          src: local("Harry Potter Regular"), url("../css/Harry Potter Regular.ttf") format('woff');
+      }
+      html {
+          scroll-behavior: smooth;
+      }
+      body {
+          padding-top: 50px;
+          font-family: 'Garamond', serif;
+          background-image: url('편지지사본.png');
+          background-size: 100%;
+          background-position: center top;
+          min-height: 100vh;
+          margin: 0;
+      }
+      h2 {
+          font-size: 2em;
+          font-family: "Harry Potter Regular", serif;
+      }
+      .logo {
+          text-align: center;
+      }
+      #logo {
+          width: 300px;
+          height: auto;
+      }
+      #menu {
+          border-top: 1px solid black;
+          border-bottom: 1px solid black;
+          text-align: center;
+      }
+      a {
+          text-decoration-line: none;
+      }
+      a:link {
+          color: black;
+      }
+      a:visited {
+          color: black;
+      }
+      #menu > ul > li {
+          list-style: none;
+          margin: 3px;
+          padding: 3px;
+          display: inline-block;
+      }
+      .side-menu.active {
+          left: -50px;
+          padding: 20px;
+          box-sizing: border-box;
+          position: fixed;
+          top: 0;
+          width: 230px;
+          height: 100%;
+          transition: all 0.5s;
+      }
+      .textbox {
+          text-align: center;
+          display: inline-block;
+          border: 1px none black;
+          margin: 20px 20%;
+          width: 500px;
+      }
+      #poster {
+          width: 255px;
+          height: 355px;
+          float: left;
+          margin: 10px;
+          padding: 25px;
+          background-image: url('액자프레임진짜.jpg');
+          background-size: 100%;
+          background-color: cornsilk;
+      }
+      section {
+          text-align: center;
+      }
+      p {
+          text-align: left;
+      }
+      footer {
+          text-align: center;
+      }
+      .footerbox {
+          max-width: 100%;
+          margin: 10px auto;
+          border: 1px none black;
+          text-align: center;
+          display: inline-block;
+      }
+      @media screen and (max-width: 767px) {
+          #menu {
+              display: none;
+          }
+          body {
+              overflow-x: hidden;
+          }
+          .textbox {
+              width: 90%;
+              height: auto;
+              margin: auto;
+          }
+          #poster {
+              float: none;
+              display: block;
+              margin: 10px auto;
+          }
+          .footerbox {
+              width: 90%;
+          }
+      }
+      .slider-wrapper {
+        width: 400px;
+        margin: 0 auto;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 30px;
+    }
+      [data-role="slider"] {
+        position: relative;
+        margin: 0 auto;
+        width: 300px; /* 슬라이더의 넓이를 데이터 속성에서 설정 */
+        height: 450px; /* 슬라이더의 높이를 데이터 속성에서 설정 */
+        display: flex;
+        align-items: center;
+    }
+    
+    [data-role="slider"] .container {
+        display: flex;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+    }
+    
+    [data-role="slider"] .item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    #left-button, #right-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        z-index: 1;
+    }
+    
+    #left-button {
+        left: 0; /* 버튼을 슬라이더 컨테이너의 왼쪽 끝에 위치 */
+    }
+    
+    #right-button {
+        right: 0; /* 버튼을 슬라이더 컨테이너의 오른쪽 끝에 위치 */
+    }
+    
+      @media screen and (min-width: 768px) {
+          .textbox {
+              width: 700px;
+              height: 600px;
+          }
+      }
+  </style>
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+    <script src="script.js"></script>
+<body>
+    <header>
+      <div class="logo" id="top">
+        <a href="../main2.html"><img src="글씨.png" alt="harrypotter" id="logo"></a>
+      </div>
+    </header>
+    <nav>
+      <div id="menu" class="side-menu">
+        <ul>
+          <li><a href="#1">Sorcerer's Stone</a></li>
+          <li><a href="#2">Chamber of Secrets</a></li>
+          <li><a href="#3">Prisoner of Azkaban</a></li>
+          <li><a href="#4">Goblet of Fire</a></li>
+          <li><a href="#5">Order of the Phoenix</a></li>
+          <li><a href="#6">Half-Blood Prince</a></li>
+          <li><a href="#7">Deathly Hallows</a></li>
+        </ul>
+      </div>
+    </nav> 
+    <section>
+      <div class="slider-wrapper">
+        <button id="left-button">←</button>
+        <div data-role="slider" data-width="300" data-height="450">
+            <div class="container">
+                <div class="item">
+                    <img src="마법사의돌.webp" alt="마법사의 돌">
+                </div>
+                <div class="item">
+                    <img src="비밀의방.jpg" alt="비밀의 방">
+                </div>
+                <div class="item">
+                    <img src="아즈카반의죄수.jpg" alt="아즈카반의 죄수">
+                </div>
+                <div class="item">
+                    <img src="불의잔.jpg" alt="불의 잔">
+                </div>
+                <div class="item">
+                    <img src="불사조기사단.jpg" alt="불사조 기사단">
+                </div>
+                <div class="item">
+                    <img src="혼혈왕자.jpg" alt="혼혈 왕자">
+                </div>
+                <div class="item">
+                    <img src="죽음의성물.jpg" alt="죽음의 성물">
+                </div>
+            </div>
+        </div>
+        <button id="right-button">→</button>
+    </div>
+    
+      <div class="textbox" id="1">
+        <h2>Harry Potter and the Philosopher's Stone</h2>
+        <h3>Click the Poster</h3>
+        <a href="https://youtu.be/l91Km49W9qI?si=Y_yU8O6JSh3Ol8BC"><img src="마법사의돌.webp" id="poster"></a>
+        <p><b>해리 포터</b>는 어린 시절 부모를 잃고, 마법을 믿지 않는 이모 가족인 더즐리 가족과 함께 살고 있습니다. 
+          <b>해리</b>는 이모와 이모부, 그리고 사촌 두들리에게 학대를 받으며 자랐지만, 
+          11번째 생일을 앞두고 그의 인생이 완전히 바뀌게 됩니다.</p>
+        <p><b>해리</b>의 11번째 생일에 거대한 체격의 마법사인 해그리드가 찾아와 <b>해리</b>가 사실 마법사이며,
+           호그와트 마법학교에 입학하게 되었다는 소식을 전합니다. 
+           <b>해리</b>는 자신의 부모가 어둠의 마법사 <b>볼드모트</b>에 의해 살해당했으며,
+            자신이 그 공격에서 살아남은 유일한 사람이라는 사실도 알게 됩니다.</p>
+        <p>
+          호그와트에서 <b>해리</b>는 새로운 친구들을 사귀게 됩니다. <b>론 위즐리</b>와 <b>헤르미온느 그레인저</b>가 그 친구들로, 
+          이들은 <b>해리</b>와 함께 다양한 모험을 겪습니다. <b>해리</b>는 마법사로서의 능력을 익히고,
+           퀴디치라는 마법 스포츠에서 뛰어난 재능을 보이며, 그리핀도르 기숙사에 배정됩니다.</p>
+        <p><b>해리</b>와 그의 친구들은 호그와트에서 여러 가지 미스터리한 사건들을 조사하면서, 
+          학교에 숨겨진 마법사의 돌이 <b>볼드모트</b>의 부활을 막을 수 있는 중요한 물건임을 알게 됩니다.
+          <b>볼드모트</b>는 이 돌을 이용해 다시 살아나려 하고, 
+           <b>해리</b>와 그의 친구들은 이를 막기 위해 위험을 무릅쓰고 돌을 찾으러 갑니다.</p>
+        <p> 결국 <b>해리</b>는 마법사의 돌을 지키고 <b>볼드모트</b>의 계획을 저지하는 데 성공합니다.
+          <b>해리</b>는 자신이 마법사의 세계에서 중요한 인물임을 깨닫고, 
+           앞으로의 모험을 기대하며 첫 학년을 마무리하게 됩니다.</p>
+      </div>
+      <div class="textbox" id="2">
+        <h2>Harry Potter and the Chamber of Secrets</h2>
+        <h3>Click the Poster</h3>
+        <a href="https://youtu.be/nE11U5iBnH0?si=_Gvb_3RMs12RyI6h"><img src="비밀의방.jpg" id="poster"></a>
+        <p><b>해리</b>는 여름 방학 동안 더즐리 가족과 함께 불행한 시간을 보냅니다.
+          하지만 방학이 끝나갈 무렵, <b>해리</b>는 도비라는 집요정을 만나게 되고, 
+          도비는 <b>해리</b>에게 호그와트로 돌아가면 큰 위험이 닥칠 것이라고 경고합니다.
+          <b>해리</b>는 도비의 경고를 무시하고 론 위즐리 가족의 도움으로 호그와트로 돌아가기로 결심합니다.
+        </p>
+        <p>학교에 돌아온 <b>해리</b>와 친구들은 "비밀의 방"이 열렸다는 소문을 듣게 됩니다. 
+          비밀의 방은 학교 설립자 중 한 명인 살라자르 슬리데린이 만든 것으로, 
+          그 안에는 학교를 순수한 혈통의 마법사만이 다닐 수 있도록 하는 괴물이 숨겨져 있다고 합니다. 
+          괴물이 풀려나와 학생들을 공격하기 시작하고, 피해자들은 돌로 변하는 끔찍한 사건이 발생합니다.
+        </p>
+        <p><b>해리, 론, 그리고 헤르미온느</b>는 비밀의 방의 비밀을 풀기 위해 조사를 시작합니다. 
+          그 과정에서 <b>해리</b>는 자신이 파셀텅어(뱀과 대화할 수 있는 능력)를 구사할 수 있다는 것을 알게 되며,
+           이로 인해 일부 학생들은 해리를 의심하기 시작합니다. 결국, 그들은 비밀의 방이 위치한 곳을 알아내고, 
+           <b>해리</b>는 안으로 들어가 괴물과 맞서 싸웁니다. 괴물은 바실리스크라는 거대한 뱀이며, 
+           <b>해리</b>는 덤블도어 교수의 도움을 받아 뱀을 물리치고, 
+           비밀의 방을 열게 한 진짜 범인인 톰 리들의 기억을 파괴합니다. 
+           톰 리들은 나중에 <b>볼드모트</b> 경으로 알려지는 인물입니다.
+        </p>
+        <p>
+          <b>해리</b>는 비밀의 방의 비밀을 풀고 학교를 구하는 영웅이 되지만, 
+          그 과정에서 자신과 <b>볼드모트</b> 사이의 깊은 연결고리를 더욱 깨닫게 됩니다. 
+        </p>
+      </div>
+      <div class="textbox" id="3">
+        <h2>Harry Potter and the Prisoner of Azkaban</h2>
+        <h3>Click the Poster</h3>
+        <a href="https://youtu.be/cK2WNlj6kR0?si=JTEMDKJoLljnypqM"><img src="아즈카반의죄수.jpg" id="poster"></a>
+        <p><b>해리</b>는 여름 방학 동안 이모부와 이모 집에서 불행하게 지내지만, 
+          이모부의 여동생인 마지 이모가 방문하면서 상황은 더 악화됩니다.
+           마지 이모가 <b>해리</b>의 부모를 모욕하자 <b>해리</b>는 화를 참지 못하고 무의식적으로 
+           마법을 사용해 그녀를 부풀어 오르게 만듭니다.
+           <b>해리</b>는 이 사건으로 인해 이모부 집을 떠나 런던으로 향합니다.</p>
+
+          <p>런던에서 <b>해리</b>는 마법사 버스를 타고 리키 콜드론으로 가게 되며, 
+          거기서 아서 위즐리와 코넬리우스 퍼지 마법부 장관으로부터 아즈카반
+           감옥에서 탈출한 위험한 범죄자 <b>시리우스 블랙</b>이 <b>해리</b>를 노리고 있다는 소식을 듣게 됩니다.
+           <b>해리</b>는 위즐리 가족과 함께 호그와트로 돌아갑니다.</p>
+          
+          <p>호그와트에서는 새로운 어둠의 마법 방어술 교수로 루핀 교수가 부임합니다.
+           루핀 교수는 학생들에게 실용적인 방어술을 가르치며 큰 인기를 얻지만, 그에게는 비밀이 있습니다.</p>
+          
+          <p>한편, <b>해리</b>와 친구들은 <b>시리우스 블랙</b>의 정체와 그가 <b>해리</b>의 부모를 배신하고
+           <b>볼드모트</b>에게 넘겼다는 이야기를 듣게 됩니다. 
+           그러나 그 과정에서 <b>해리</b>와 친구들은 <b>시리우스</b>가 진정한 배신자가 아니며,
+            진짜 배신자는 피터 페티그루라는 사실을 알게 됩니다. 
+            페티그루는 오랫동안 론의 애완쥐 스캐버스로 모습을 숨기고 있었습니다.</p>
+          
+          <p><b>해리</b>와 친구들은 루핀 교수와 <b>시리우스</b>를 도와 페티그루를 잡으려 하지만, 
+          페티그루는 다시 도망치고 맙니다. 결국 <b>해리</b>는 <b>시리우스</b>를 구하기 위해 <b>헤르미온느</b>가
+          가진 시간 여행 장치를 사용해 그를 구출합니다. <b>시리우스</b>는 <b>해리</b>가 믿을 수 있는 유일한 
+          친척임을 밝혀주며, 해리는 새로운 희망을 가지게 됩니다.</p>
+      </div>
+      <div class="textbox" id="4">
+        <h2>Harry Potter and the Goblet of Fire</h2>
+        <h3>Click the Poster</h3>
+        <a href="https://youtu.be/3EGojp4Hh6I?si=mEZa4IgyMxSdStRV"><img src="불의잔.jpg" id="poster"></a>
+        <p><b>해리</b>는 월드컵 퀴디치 경기를 보기 위해 론의 가족과 함께 여름을 보냅니다.
+          경기 후, 데스 이터들이 출현하고, <b>볼드모트</b>의 표식이 하늘에 나타납니다.
+          <b>해리</b>가 호그와트로 돌아가게 되면, 그 해의 큰 사건인 트라이위저드 토너먼트가 발표됩니다.
+          이 토너먼트는 세 마법학교에서 온 세 명의 대표가 마법의 기술과 용기를 시험하는 대회입니다.
+          <b>해리</b>는 나이 제한으로 인해 참가가 불가하지만, 놀랍게도 불의 잔에서 <b>해리</b>의 이름이
+          네 번째 대표로 뽑힙니다. <b>해리</b>는 자신이 참가자로 선택된 이유를 알 수 없습니다.
+        </p>
+        <p>토너먼트에서는 용과의 대결, 수중 구조 임무, 그리고 미로 속의 대결 과제로 구성됩니다.
+          <b>해리</b>는 이 과제들을 성공적으로 수행하지만, 토너먼트는 더 큰 음모의 일부임이 밝혀집니다.
+        </p>
+        <p>최종 과제에서, <b>해리</b>와 <b>시더릭 디고리</b>는 공동 우승자로 결정되고, 
+          포트키를 통해 <b>볼드모트</b>가 숨어 있는 곳으로 데려가집니다. <b>볼드모트</b>는 <b>해리</b>를 죽이려 하고,
+           <b>시더릭</b>은 살해됩니다.
+          <b>해리</b>는 겨우 탈출에 성공하고, <b>볼드모트</b>의 부활을 목격한 최초의 사람이 됩니다.
+        </p>
+        <p><b>해리</b>는 호그와트로 돌아와 <b>볼드모트</b>의 부활을 알립니다. 
+          하지만 많은 사람들이 <b>해리</b>의 말을 믿지 않습니다.</p>
+      </div>
+      <div class="textbox" id="5">
+        <h2>Harry Potter and the Order of Phoenix</h2>
+        <h3>Click the Poster</h3>
+        <a href="https://youtu.be/y6ZW7KXaXYk?si=99Z8mn48zvLjNLtu"><img src="불사조기사단.jpg" id="poster"></a>
+        <p><b>해리</b>는 여름 방학 동안 머글 세계에서 <b>데멘터</b>의 공격을 받습니다. 
+          이를 방어하는 과정에서 마법을 사용한 <b>해리</b>는 마법부로부터 퇴학 위기에 처하지만,
+           덤블도어 덕분에 무죄를 입증합니다.</p>
+        <p>호그와트로 돌아온 <b>해리</b>는 <b>볼드모트</b>의 부활을 믿지 않는 
+          마법부가 호그와트에 엄브릿지 교수를 파견하여 학교를 통제하려는 시도를 목격합니다.
+          엄브릿지는 학생들에게 어둠의 마법 방어술을 가르치는 대신 이론만을 가르치며, <b>해리</b>와 갈등을 빚습니다.</p>
+        <p><b>해리</b>는 친구들과 함께 비밀리에 <b>"덤블도어의 군대"</b>라는 모임을 조직하고, 실제 방어술을 배우기 시작합니다. 
+          이 과정에서 <b>해리</b>는 <b>론, 헤르미온느, 네빌, 루나, 진 </b>등을 포함한 여러 친구들과 더욱 가까워집니다.
+        </p>
+        <p>한편, <b>해리</b>는 이상한 꿈을 꾸기 시작합니다. 이 꿈을 통해 <b>볼드모트</b>가 자신과 연결되어 있음을 알게 되며,
+          이는 결국 <b>시리우스 블랙</b>이 위험에 처해 있다는 예감을 가져옵니다. <b>해리</b>와 친구들은 <b>시리우스</b>를 구하기 위해 마법부로 향하고,
+          그곳에서 <b>볼드모트</b>의 추종자들과 치열한 전투를 벌입니다.
+        </p>
+        <p>이 전투에서 <b>시리우스</b>는 벨라트릭스 레스트랭에 의해 죽음을 맞이합니다. 
+          <b>해리</b>는 큰 슬픔에 빠지지만, <b>덤블도어</b>는 <b>해리</b>에게 예언을 밝히며 그가 <b>볼드모트</b>를 물리칠 운명을 
+          지니고 있음을 알려줍니다.
+        </p>
+      </div>
+      <div class="textbox" id="6">
+        <h2>Harry Potter and the Half-Blood Prince</h2>
+        <h3>Click the Poster</h3>
+        <a href="https://youtu.be/tAiy66Xrsz4?si=ixGIluEhA-9sPxgn"><img src="혼혈왕자.jpg" id="poster"></a>
+        <p><b>볼드모트</b>의 힘이 강해짐에 따라 마법계는 큰 위기에 처합니다. <b>덤블도어</b> 교장은 <b>해리</b>를 별도로 가르치기 시작하며,
+         <b>해리</b>에게 과거 <b>볼드모트</b>의 삶에 대한 중요한 기억들을 보여줍니다. 이를 통해 <b>해리</b>는 <b>볼드모트</b>가 불멸을 추구하기 위해 자신의 
+          영혼을 여러 조각으로 나누어 <b>'호크룩스'</b>에 숨겼다는 것을 알게 됩니다.
+        </p>
+        <p>
+          한편, <b>해리</b>는 호그와트에서 '혼혈왕자'라고 서명된 구식 마법책을 발견하고, 
+          그 책의 도움으로 마법 묘약 수업에서 뛰어난 성과를 보입니다. <b>해리</b>는 나중에 혼혈왕자의 정체가 <b>스네이프</b> 교수임을 알게 됩니다.
+        </p>
+        <p>
+          <b>해리</b>와 <b>덤블도어</b>는 <b>호크룩스</b>를 찾아 파괴하기 위한 여정을 시작합니다. 그 과정에서 해리는 <b>덤블도어</b>가 
+          죽음에 가까워지는 것을 목격합니다. 호그와트로 돌아온 뒤, <b>덤블도어</b>는 <b>볼드모트</b>의 추종자들에 의해
+           배신당하고 살해됩니다. 이 배신자는 바로 <b>스네이프</b>였습니다.
+        </p>
+        <p><b>덤블도어</b>의 죽음은 마법계에 큰 충격을 주며, 해리는 <b>볼드모트</b>를 물리치고 <b>호크룩스</b>를 
+          모두 파괴하기 위해 친구들과 함께 호그와트를 떠나기로 결심합니다.</p>
+      </div>
+      <div class="textbox" id="7">
+        <h2>Harry Potter and the Deathly Hallows</h2>
+        <h3>Click the Poster</h3>
+        <a href="https://youtu.be/17ywQS6XO-M?si=SZ2ikmBRxlzdg1fS"><img src="죽음의성물.jpg" id="poster"></a>
+        <p><b>볼드모트</b>의 힘이 강해지면서 마법계는 전례 없는 위기에 처합니다. 
+          <b>해리, 론, 헤르미온느</b>는 호크룩스를 찾아 파괴하기 위해 여행을 시작합니다. </p>
+        <p>세 친구는 여러 위험을 겪으며 호크룩스를 찾아내고 파괴합니다. 
+          이 과정에서 그들은 <b>볼드모트</b>가 과거에 만들어낸 죽음의 성물에 대한 이야기를 알게 됩니다.
+          죽음의 성물은 죽음을 이기는 세 가지 마법의 물건으로, <b>불멸의 돌, 부활의 돌, 그리고 무적의 망토</b>를 포함합니다.
+        </p>
+        <p><b>해리</b>는 자신이 무적의 망토를 이미 가지고 있음을 알게 되고, 
+          부활의 돌을 사용하여 사랑하는 사람들과 마지막으로 대화를 나눕니다.
+          <b>해리</b>는 <b>볼드모트</b>와의 최종 대결에서 자신이 사실은 호크룩스 중 하나라는 것을 깨닫고, 
+          자신을 희생하여 <b>볼드모트</b>를 약화시킵니다.</p>
+        <p><b>해리</b>가 죽음을 거부하고 돌아온 후, 호그와트에서 <b>볼드모트</b>와 그의 추종자들과의 마지막 전투가 벌어집니다. 
+          결국 <b>해리</b>는 <b>볼드모트</b>를 패배시키고, 마법계는 다시 평화를 찾습니다.
+        </p>
+      </div>
+    </section>
+    <footer>
+      <div class="footerbox"><a href="#top"><img src="도장.png" width="100px"></a>To the Top</div>
+    </footer>
+</body>
+</html>
